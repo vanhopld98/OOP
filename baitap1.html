@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368" height="768"></canvas>
+<script>
+    class Rectangle{
+        width;
+        height;
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+        getChuVi(){
+            return (this.width + this.height)*2
+        }
+        getArea(){
+            return (this.height * this.width)
+        }
+        veHCN(){
+            let a = document.getElementById("myCanvas").getContext("2d");
+            a.fillRect(10,10,this.width,this.height)
+            a.stroke;
+        }
+    }
+    let rectangle = new Rectangle(200,300);
+    let ChuVi = rectangle.getChuVi();
+    let Area = rectangle.getArea();
+    let veHCn = rectangle.veHCN();
+    alert("chu vi là : "+ChuVi+" Diện tích là: "+Area);
+</script>
+</body>
+</html>
