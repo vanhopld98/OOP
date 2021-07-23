@@ -1,10 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // class BongDen{
+    //     trangThai;
+    //     constructor(trangThai) {
+    //         this.trangThai = trangThai
+    //     }
+    //     turnOff(){
+    //         this.trangThai = false;
+    //     }
+    //     turnOn(){
+    //         this.trangThai = true;
+    //     }
+    // }
+    // let denhoc = new BongDen(false);
+    // class NutBam{
+    //     trangThai;
+    //     den;
+    //     constructor(trangThai,den) {
+    //         this.trangThai = trangThai;
+    //         this.den = den;
+    //     }
+    //     switchOn (){
+    //         this.den.turnOn();
+    //     }
+    //     switchOff(){
+    //         this.den.turnOff();
+    //     }
+    // }
+    // let congtac = new NutBam(true,denhoc);
+
+ class Battery{
+     energy;
+     constructor(energy) {
+         this.energy = energy
+     }
+     setEnergy(){
+        this.energy = energy;
+     }
+    getEnergy(){
+         return this.energy;
+    }
+    decreaseEnergy(){
+         if (this.energy>0){
+             this.energy--;
+         }
+    }
+ }
+ class FlashLamp{
+     status;
+     battery;
+     constructor(battery) {
+         this.battery = battery;
+     }
+     setBattery(){
+        this.battery = battery;
+     }
+     getBatteryInfo(){
+         return this.battery.getEnergy();
+     }
+     turnOn(){
+         this.status = true;
+     }
+     turnOff(){
+         this.status = false;
+     }
+     light(){
+         if (this.status===true){
+             alert("Lighting");
+         } else {
+             alert("Not Lighting");
+         }
+     }
+ }
+ let battery = new Battery();
+ battery.setEnergy(10);
+
+ let flashLamp = new FlashLamp();
+ flashLamp.setBattery();
+
+ document.write("Battery info:"+flashLamp.getBatteryInfo()+'<br>');
+ flashLamp.light();
+
+ document.write("Turn on<br>");
+ flashLamp.turnOn();
+ flashLamp.light();
+ document.write("Battery info:"+ flashLamp.getBatteryInfo()+"<br>");
+
+ document.write("Turn off<br>");
+ flashLamp.turnOff();
+ flashLamp.light();
+</script>
 </body>
 </html>

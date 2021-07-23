@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Temperature{
+        celsius;
+        constructor(celsius) {
+            this.celsius = celsius
+        }
+        convertFahrenheit(){
+            return (this.celsius*1.8)+32
+        }
+        convertKelvin(){
+            return (this.celsius+273.15)
+        }
+    }
+    let celsius =parseInt(prompt('Nhập độ C:'))
+    let temperature = new Temperature(celsius);
+    let fahrenheit = temperature.convertFahrenheit();
+    let kelvin = temperature.convertKelvin();
+    alert(celsius + " độ C ="+fahrenheit+" độ F"+" = "+kelvin+"K");
+</script>
+</body>
+</html>
