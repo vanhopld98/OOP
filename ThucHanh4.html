@@ -6,95 +6,49 @@
 </head>
 <body>
 <script>
-    // class BongDen{
-    //     trangThai;
-    //     constructor(trangThai) {
-    //         this.trangThai = trangThai
-    //     }
-    //     turnOff(){
-    //         this.trangThai = false;
-    //     }
-    //     turnOn(){
-    //         this.trangThai = true;
-    //     }
-    // }
-    // let denhoc = new BongDen(false);
-    // class NutBam{
-    //     trangThai;
-    //     den;
-    //     constructor(trangThai,den) {
-    //         this.trangThai = trangThai;
-    //         this.den = den;
-    //     }
-    //     switchOn (){
-    //         this.den.turnOn();
-    //     }
-    //     switchOff(){
-    //         this.den.turnOff();
-    //     }
-    // }
-    // let congtac = new NutBam(true,denhoc);
+    class ElectricLamp {
+        status;
 
- class Battery{
-     energy;
-     constructor(energy) {
-         this.energy = energy
-     }
-     setEnergy(){
-        this.energy = energy;
-     }
-    getEnergy(){
-         return this.energy;
+        constructor(status) {
+            this.status = status;
+        }
+
+        turnOff() {
+            this.status = false;
+        }
+
+        turnOn() {
+            this.status = true;
+        }
     }
-    decreaseEnergy(){
-         if (this.energy>0){
-             this.energy--;
-         }
+
+    let denhoc = new ElectricLamp(false);
+    let denhoc1 = new ElectricLamp(false);
+
+    class SwitchButton {
+        status;
+        lamp;
+
+        constructor(status, lamp) {
+            this.status = status;
+            this.lamp = lamp;
+        }
+
+        connectToLamp(newLamp) {
+            this.lamp = newLamp;
+        }
+
+        switchOff() {
+            this.lamp.turnOff();
+        }
+
+        switchOn() {
+            this.lamp.turnOn();
+        }
     }
- }
- class FlashLamp{
-     status;
-     battery;
-     constructor(battery) {
-         this.battery = battery;
-     }
-     setBattery(){
-        this.battery = battery;
-     }
-     getBatteryInfo(){
-         return this.battery.getEnergy();
-     }
-     turnOn(){
-         this.status = true;
-     }
-     turnOff(){
-         this.status = false;
-     }
-     light(){
-         if (this.status===true){
-             alert("Lighting");
-         } else {
-             alert("Not Lighting");
-         }
-     }
- }
- let battery = new Battery();
- battery.setEnergy(10);
 
- let flashLamp = new FlashLamp();
- flashLamp.setBattery();
-
- document.write("Battery info:"+flashLamp.getBatteryInfo()+'<br>');
- flashLamp.light();
-
- document.write("Turn on<br>");
- flashLamp.turnOn();
- flashLamp.light();
- document.write("Battery info:"+ flashLamp.getBatteryInfo()+"<br>");
-
- document.write("Turn off<br>");
- flashLamp.turnOff();
- flashLamp.light();
+    let ct = new SwitchButton(true, denhoc);
+    let ct1 = new SwitchButton(true, denhoc1);
 </script>
 </body>
 </html>
