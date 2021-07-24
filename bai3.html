@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<h3>Mobile 1</h3>
+<button type="button" onclick="turnOn()">Bật</button>
+<button type="button" onclick="turnOff()">Tắt</button>
+<br>
+<input type="text" id="textMobile1">
+<button onclick="createNewMessMobile1()">Gửi</button>
+<button type="button" onclick="chargePin1()">SạcPin</button>
+
+<table border="1">
+    <tr>
+        <th>
+            Hộp thư đi Mobile 1
+        </th>
+        <th>
+            Hộp thư đến Mobile 1
+        </th>
+        <th>Pin</th>
+    </tr>
+    <tr>
+        <td id="outbox1"></td>
+        <td id="inbox1"></td>
+        <td id="batteryMobile1"></td>
+    </tr>
+</table>
+
+<h3>Mobile 2</h3>
+<button type="button" onclick="turnOn()">Bật</button>
+<button type="button" onclick="turnOff()">Tắt</button>
+<br>
+<input type="text" id="textMobile2">
+<button type="button" onclick="createNewMessMobile2()">Gửi</button>
+<button type="button" onclick="chargePin2()">SạcPin</button>
+
+<table border="1">
+    <tr>
+        <th>Hộp thư đi Mobile 2</th>
+        <th>Hộp thư đến Mobile 2</th>
+        <th>Pin</th>
+    </tr>
+    <tr>
+        <td id="outbox2"></td>
+        <td id="inbox2"></td>
+        <td id="batteryMobile2"></td>
+    </tr>
+</table>
+
+<script>
+    class Mobile {
+        status;
+        battery;
+        inbox;
+        outbox;
+        compose;
+
+        constructor(status, battery, inbox, outbox, compose) {
+            this.status = false;
+            this.battery = battery;
+            this.inbox = [];
+            this.outbox = [];
+            this.compose = "";
+        }
+
+        turnOn() {
+            this.status = true;
+        }
+
+        turnOff() {
+            this.status = false;
+        }
+
+        getBattery() {
+            this.battery = battery;
+        }
+
+        chargeBattery() {
+            this.battery = 100;
+        }
+
+        // composeMessage(message) {
+        //     this.compose.push(message);
+        // }
+
+        receive(mobile, message) {
+            this.inbox.push(message);
+            mobile.outbox.push(message);
+        }
+
+        send(mobile, message) {
+            this.outbox.push(message);
+            mobile.inbox.push(message);
+            this.battery--;
+        }
+
+    }
+
+    let mobile1 = new Mobile(false, 50);
+    let mobile2 = new Mobile(false, 30);
+
+    function turnOn() {
+        mobile1.status = true;
+        alert("Điện thoại đã mở")
+    }
+
+    function turnOff() {
+        mobile1.status = false;
+        alert("Điện thoại đang tắt")
+    }
+
+    function createNewMessMobile1() {
+        let messMobile1 = document.getElementById("textMobile1").value;
+        mobile1.send(mobile2, messMobile1);
+        document.getElementById("outbox1").innerText = mobile2.inbox;
+        document.getElementById("inbox2").innerText = mobile1.outbox;
+        document.getElementById("batteryMobile1").innerText = mobile1.battery + "%";
+    }
+
+    function createNewMessMobile2() {
+        let messMobile2 = document.getElementById("textMobile2").value;
+        mobile2.send(mobile1, messMobile2);
+        document.getElementById("outbox2").innerText = mobile1.inbox;
+        document.getElementById("inbox1").innerText = mobile2.outbox;
+        document.getElementById("batteryMobile2").innerText = mobile2.battery + "%";
+    }
+
+    function chargePin1() {
+        mobile1.chargeBattery();
+        document.getElementById("batteryMobile1").innerText = mobile1.battery + "%";
+    }
+
+    function chargePin2() {
+        mobile2.chargeBattery();
+        document.getElementById("batteryMobile2").innerText = mobile2.battery + "%"
+    }
+</script>
+</body>
+</html>
