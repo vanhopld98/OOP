@@ -5,6 +5,58 @@
     <title>bài 4</title>
 </head>
 <body>
+<script>
+    class Apple {
+        weight;
 
+        constructor(weight) {
+            this.weight = weight;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        lossWeight() {
+            this.weight--
+        }
+    }
+
+    class Human {
+        name;
+        gender;
+        weight;
+        Apple;
+
+        constructor(name, gender, weight, Apple) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+            this.Apple = Apple;
+        }
+
+        eatApple() {
+            if (this.Apple.getWeight() > 0) {
+                this.Apple.lossWeight()
+            } else {
+                alert('Hét táo mất tiu rồi');
+            }
+
+        }
+
+        say(message) {
+            console.log(message);
+        }
+
+        checkWeightApple() {
+            console.log(this.Apple.getWeight())
+        }
+    }
+
+    let apple = new Apple(10);
+    let adam = new Human("Adam", "male", 50, apple);
+    let eva = new Human("Eva", "female", 42, apple);
+
+</script>
 </body>
 </html>
