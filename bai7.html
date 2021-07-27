@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Tivi {
+        status;
+        channel;
+        volume;
+
+        constructor(status, channel, volume) {
+            this.status = false;
+            this.channel = channel;
+            this.volume = volume;
+        }
+
+        turnOnTivi() {
+            this.status = true;
+            if (this.status === true) {
+                alert("Tivi đã mở");
+            }
+        }
+
+        turnOffTivi() {
+            this.status = false;
+            if (this.status === false) {
+                alert("Tivi đã tắt");
+            }
+        }
+
+        setChangeChannel(channel) {
+            this.channel = channel;
+        }
+
+        volumeUp(volume) {
+            this.volume++
+        }
+
+        getChannel() {
+            return this.channel;
+        }
+
+        getVolume() {
+            return this.volume;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+    }
+
+    class Remote {
+        tivi;
+
+        constructor(tivi) {
+            this.tivi = tivi;
+        }
+
+        changeChannel(channel) {
+            if (this.tivi.getStatus()) {
+                this.tivi.setChangeChannel(channel);
+            } else {
+                alert("tivi chưa mở");
+            }
+
+        }
+
+        upVolume(volume) {
+            if (this.tivi.getStatus()) {
+                this.tivi.volumeUp(volume);
+            } else {
+                alert("tivi chưa mở");
+            }
+
+        }
+
+        turnOnTivi(status) {
+            this.tivi.turnOnTivi(status);
+        }
+
+        turnOffTivi(status) {
+            this.tivi.turnOffTivi(status);
+        }
+    }
+
+    let tivi = new Tivi(false, 1, 0);
+    let remote = new Remote(tivi);
+</script>
+</body>
+</html>
